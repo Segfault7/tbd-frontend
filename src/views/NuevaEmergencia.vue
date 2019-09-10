@@ -1,18 +1,17 @@
 <template>
-  <div class="new-dog">
-    <h1>Nuevo perro</h1>
+  <div class="nueva-emergencia">
+    <h1>Nueva emergencia</h1>
     <form>
       <div class="form-item">
-        <label for="name">Nombre</label>
-        <input id="name" type="text" v-model="dog.name" />
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" v-model="emergencia.nombre" />
+        <input id="ubicacion" type="text" v-model="emergencia.ubicacion" />
+        <textarea id="descripcion" v-model="emergencia.descripcion" />
       </div>
       <button type="button" @click="save">Guardar</button>
     </form>
     <div v-if="message.length>0" class="form-message">
       {{message}}
-    </div>
-    <div class="view-model">
-      Nombre: {{dog.name}}
     </div>
   </div>
 </template>
@@ -20,19 +19,19 @@
 export default{
   data:function(){
     return{
-      dog:{},
+      emergencia:{},
       message:""
     }
   },
   methods:{
     save:async function(){
       this.message = "";
-      if(this.dog.name==""){
+      if(this.emergencia.nombre==""){
         this.message = "Debe ingresar un nombre";
         return false;
       }
       try {
-          let response = await this.$http.post('/dogs', this.dog);
+          let response = await this.$http.post('/emergencias', this.dog);
           this.message = "Se ha agregado existosamente"
       } catch (e) {
         console.log('error',e)

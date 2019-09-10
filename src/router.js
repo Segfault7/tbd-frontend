@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Dogs from './views/Dogs.vue'
-import NewDog from './views/NewDog.vue'
+import Emergencias from './views/Emergencias.vue'
+import NuevaEmergencia from './views/NuevaEmergencia.vue'
 
 Vue.use(Router);
 var router = new Router({
@@ -9,17 +9,17 @@ var router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Dogs
+      component: Emergencias
     },
     {
-      path: '/dogs',
-      name: 'dogs',
-      component: Dogs
+      path: '/emergencias',
+      name: 'emergencias',
+      component: Emergencias
     },
     {
-      path:'/new-dog',
-      name:'new-dog',
-      component:NewDog
+      path:'/nuevaemergencia',
+      name:'nuevaemergencia',
+      component: NuevaEmergencia
     }
   ]
 })
