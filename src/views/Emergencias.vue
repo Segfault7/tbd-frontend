@@ -1,10 +1,8 @@
 <template>
-  <div>
+  <div class="container-fluid">
     <h1>Emergencias</h1>
-    <ul class="item-list">
-      <li v-for="item in items" :key = "item.id_emergencia">
-        {{item.nombre}} | {{item.ubicacion}} | {{item.descripcion}}
-      </li>
+    <ul class="btn-group-vertical">
+      <button v-for="item in items" :key = "item.id_emergencia" type="button" class="btn btn-secondary">{{item.nombre}} | {{item.ubicacion}} | {{item.descripcion}}</button>
     </ul>
     <pagination class="paginate" :records="totalRecords" v-model="page" :per-page="perPage" @paginate="paginate" :options="pageOptions"></pagination>
 
