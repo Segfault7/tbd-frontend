@@ -1,9 +1,29 @@
 <template>
-  <div class="container-fluid">
-    <h1>Emergencias</h1>
-    <ul class="btn-group-vertical">
+  <div>
+    <h1 class="font-weight-black">Emergencias</h1>
+    <v-container
+      class="pa-2"
+      fluid
+    >
+      <v-col
+      max-width="800"
+      class="mx-auto"
+      v-for ="item in items"
+      :key ="item.id_emergencia">
+        <v-card>
+          <v-card-title>{{item.nombre}}</v-card-title>
+          <v-card-text>
+            <p class="text-left">Ubicación: {{item. ubicacion}} <br></p>
+            Descripción: {{item.descripcion}}</v-card-text>
+          <v-card-actions>
+            <v-btn text>Ver tareas</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-container>
+    <!--ul class="btn-group-vertical">
       <button v-for="item in items" :key = "item.id_emergencia" type="button" class="btn btn-secondary">{{item.nombre}} | {{item.ubicacion}} | {{item.descripcion}}</button>
-    </ul>
+    </ul-->
     <pagination class="paginate" :records="totalRecords" v-model="page" :per-page="perPage" @paginate="paginate" :options="pageOptions"></pagination>
 
     <div v-if="items.length==0" class="empty-list">

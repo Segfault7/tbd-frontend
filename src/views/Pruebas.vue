@@ -1,98 +1,112 @@
 <template>
-  <div class="container-fluid text-center">
-    <div class="row content">
-      <div class="col-sm-2 sidenav">
-        <p><a href="#">Link</a></p>
-        <p><a href="#">Link</a></p>
-        <p><a href="#">Link</a></p>
-      </div>
-      <div class="col-sm-8 text-left">
-        <h1>Emergencias</h1>
+  <v-card>
+    <v-card-title>
+      <span v-text="title" />
 
-<div class="btn-group-vertical">
-  <button type="button" class="btn btn-secondary">LeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeftLeft</button>
-  <button type="button" class="btn btn-secondary">Middle</button>
-  <button type="button" class="btn btn-secondary">Right</button>
-</div>
-        <b-list-group>
-  <b-list-group-item href="#some-link">Awesome link</b-list-group-item>
-  <b-list-group-item href="#" active>Link with active state</b-list-group-item>
-  <b-list-group-item href="#">Action links are easy</b-list-group-item>
-  <b-list-group-item href="#foobar" disabled>Disabled link</b-list-group-item>
-</b-list-group>
-        <pagination class="paginate" :records="totalRecords" v-model="page" :per-page="perPage" @paginate="paginate" :options="pageOptions"></pagination>
+      <v-spacer></v-spacer>
 
-        <div v-if="items.length==0" class="empty-list">
-          <em>No se han cargado los datos</em>
-        </div>
-        <hr>
-        <h3>Test</h3>
-        <p>Lorem ipsum...</p>
-      </div>
-      <div class="col-sm-2 sidenav">
-        <div class="well">
-          <p>ADS</p>
-        </div>
-        <div class="well">
-          <p>ADS</p>
-        </div>
-      </div>
-    </div>
-  </div>
+      <v-btn @click="$emit('action-btn:clicked')">
+        Action
+      </v-btn>
+    </v-card-title>
+
+    <v-card-text>
+      <slot />
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
-export default{
-  data(){
-    return {
-      items:[
-        {
-          id_emergencia : 1,
-          nombre : "Incendio",
-          ubicacion: "Brasil",
-          tipo : "asdasd",
-          descripcion : "se incendia el bosque"
-        },
-        {
-          id_emergencia : 2,
-          nombre : "Terremoto",
-          ubicacion: "Chile",
-          tipo : "saogn",
-          descripcion : "no pasa nada"
-        }
-      ],
-      page:1,
-      perPage: 10,
-      totalRecords:0,
-      pageOptions:{
-        texts:{
-          count:""
-        }
-      }
-    }
-  },
-  methods:{
-    paginate:function(val){
-        this.page = val
-        this.getData();
-      },
-    getData: async function(){
-      try{
-        let offset = this.perPage*(this.page-1);
-        let perPage = this.perPage;
-        let resource = this.resource;
-        let response = await this.$http.get(`/emergencias?offset=${offset}&limit=${perPage}`);
-        this.items  = response.data;
-        console.log('headers', response.headers)
-        this.totalRecords = +response.headers['pagination-count']
-      } catch (e) {
-        console.log('error', e)
-      }
-    }
-  },
-  created:function(){
-
-    this.getData();
+  export default {
+    props: {
+      title: String,
+    },
   }
-}
 </script>
+
+<!--><template>
+  <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+    >
+      <v-list dense>
+        <v-list-item @click="">
+          <v-list-item-action>
+            <v-icon>home</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="">
+          <v-list-item-action>
+            <v-icon>contact_mail</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Contact</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar
+      app
+      color="indigo"
+      dark
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Application</v-toolbar-title>
+    </v-app-bar>
+
+    <v-content>
+      <v-container
+        fluid
+        fill-height
+      >
+        <v-layout
+          align-center
+          justify-center
+        >
+          <v-flex text-xs-center>
+            <v-tooltip left>
+              <template v-slot:activator="{ on }">
+                <v-btn
+                  :href="source"
+                  icon
+                  large
+                  target="_blank"
+                  v-on="on"
+                >
+                  <v-icon large>mdi-code-tags</v-icon>
+                </v-btn>
+              </template>
+              <span>Source</span>
+            </v-tooltip>
+
+            <v-tooltip right>
+              <template v-slot:activator="{ on }">
+                <v-btn
+                  icon
+                  large
+                  href="https://codepen.io/johnjleider/pen/rJdVMq"
+                  target="_blank"
+                  v-on="on"
+                >
+                  <v-icon large>mdi-codepen</v-icon>
+                </v-btn>
+              </template>
+              <span>Codepen</span>
+            </v-tooltip>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+    <v-footer
+      color="indigo"
+      app
+    >
+      <span class="white--text">&copy; 2019</span>
+    </v-footer>
+  </v-app>
+</template>
