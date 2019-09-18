@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store'
 import axios from 'axios';
 import router from './router'
+import Vuetify from 'vuetify/lib'
 Vue.config.productionTip = false
 
 require("./assets/style/style.scss");

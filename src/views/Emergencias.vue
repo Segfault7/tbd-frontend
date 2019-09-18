@@ -16,7 +16,7 @@
             <p class="text-left">Ubicación: {{item. ubicacion}} <br></p>
             Descripción: {{item.descripcion}}</v-card-text>
           <v-card-actions>
-            <v-btn text>Ver tareas</v-btn>
+            <v-btn>Ver tareas</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
