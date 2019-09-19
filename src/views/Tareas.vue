@@ -1,9 +1,27 @@
 <template>
-  <div class="container-fluid">
-    <h1>Tareas</h1>
-    <ul class="btn-group-vertical">
-      <button v-for="item in items" :key = "item.id_tarea" type="button" class="btn btn-secondary">{{item.titulo}} | {{item.estado}} </button>
-    </ul>
+  <div>
+    <h1 class="font-weight-black">Tareas</h1>
+    <v-container
+      class="pa-2"
+      fluid
+    >
+      <v-col
+      max-width="800"
+      class="mx-auto"
+      v-for ="item in items"
+      :key ="item.id_tarea">
+        <v-card>
+          <v-card-title>{{item.titulo}}</v-card-title>
+          
+            <p class="text-left">Estado de la tarea: {{item. estado}} <br></p>
+            
+          <v-card-actions>
+            <v-btn>Ver Responsable</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-container>
+  
     <pagination class="paginate" :records="totalRecords" v-model="page" :per-page="perPage" @paginate="paginate" :options="pageOptions"></pagination>
 
     <div v-if="items.length==0" class="empty-list">
@@ -17,7 +35,7 @@ export default{
   data(){
     return {
       items:[
-        {
+       {
           id_tarea : 1,
           titulo : "Transporte de agua",
           estado: "Completado",
@@ -64,4 +82,3 @@ export default{
   }
 }
 </script>
-
