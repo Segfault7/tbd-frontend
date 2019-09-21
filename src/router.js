@@ -5,6 +5,7 @@ import NuevaEmergencia from './views/NuevaEmergencia.vue'
 import Pruebas from './views/Pruebas.vue'
 import Tareas from './views/Tareas.vue'
 import Voluntarios from './views/Voluntarios.vue'
+import Dimensiones from './views/Dimensiones.vue'
 
 Vue.use(VueRouter);
 var router = new VueRouter({
@@ -35,6 +36,11 @@ var router = new VueRouter({
       path:'/voluntarios',
       name:'voluntarios',
       component: Voluntarios
+    },
+    {
+      path:'/dimensiones',
+      name:'dimensiones',
+      component: Dimensiones
     },
     {
       path:'/tareas',
