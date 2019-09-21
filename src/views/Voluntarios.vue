@@ -12,19 +12,18 @@
       v-for ="item in items"
       :key ="item.id_tarea">
         <v-card>
-          
-            <p class="text-left">Nombre: {{item. nombre}} <br></p>
-            <p class="text-left">Apellido: {{item. apellido}} <br></p>
+          <v-card-title>{{item. nombre}} {{item. apellido}}</v-card-title>
+          <v-card-text>
             <p class="text-left">Correo: {{item. correo}} <br></p>
             <p class="text-left">Sexo: {{item. sexo}} <br></p>
-            
+          </v-card-text>
           <v-card-actions>
-            <v-btn>Ver Dimenciones</v-btn>
+            <v-btn>Ver Dimensiones</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
     </v-container>
-  
+
     <pagination class="paginate" :records="totalRecords" v-model="page" :per-page="perPage" @paginate="paginate" :options="pageOptions"></pagination>
 
     <div v-if="items.length==0" class="empty-list">
@@ -44,7 +43,7 @@ export default{
           apellido: "Perez",
           correo : "alvin.perez@gmail.com",
           sexo: "Masculino",
-          
+
         }
       ],
       page:1,
