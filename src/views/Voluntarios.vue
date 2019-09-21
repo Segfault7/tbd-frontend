@@ -1,6 +1,7 @@
+
 <template>
   <div>
-    <h1 class="font-weight-black">Tareas</h1>
+    <h1 class="font-weight-black">Voluntario</h1>
     <v-container
       class="pa-2"
       fluid
@@ -11,13 +12,14 @@
       v-for ="item in items"
       :key ="item.id_tarea">
         <v-card>
-          <v-card-title>{{item.titulo}}</v-card-title>
           
-            <p class="text-left">Estado de la tarea: {{item. estado}} <br></p>
-             <p class="text-left">Id del voluntario encargado: {{item. id_voluntario}} <br></p>
+            <p class="text-left">Nombre: {{item. nombre}} <br></p>
+            <p class="text-left">Apellido: {{item. apellido}} <br></p>
+            <p class="text-left">Correo: {{item. correo}} <br></p>
+            <p class="text-left">Sexo: {{item. sexo}} <br></p>
             
           <v-card-actions>
-            <v-btn>Ver Responsable</v-btn>
+            <v-btn>Ver Dimenciones</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -37,17 +39,12 @@ export default{
     return {
       items:[
        {
-          id_tarea : 1,
-          titulo : "Transporte de agua",
-          estado: "Completado",
-          id_voluntario:"1",
+          id_Voluntario : 1,
+          nombre : "Alvin",
+          apellido: "Perez",
+          correo : "alvin.perez@gmail.com",
+          sexo: "Masculino",
           
-        },
-        {
-           id_tarea : 2,
-          titulo : "Construir media Agua",
-          estado: "En curso",
-          id_voluntario:"2",
         }
       ],
       page:1,
@@ -70,7 +67,7 @@ export default{
         let offset = this.perPage*(this.page-1);
         let perPage = this.perPage;
         let resource = this.resource;
-        let response = await this.$http.get(`/tareas?offset=${offset}&limit=${perPage}`);
+        let response = await this.$http.get(`/voluntarios?offset=${offset}&limit=${perPage}`);
         this.items  = response.data;
         console.log('headers', response.headers)
         this.totalRecords = +response.headers['pagination-count']

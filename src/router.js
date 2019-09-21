@@ -4,6 +4,7 @@ import Emergencias from './views/Emergencias.vue'
 import NuevaEmergencia from './views/NuevaEmergencia.vue'
 import Pruebas from './views/Pruebas.vue'
 import Tareas from './views/Tareas.vue'
+import Voluntarios from './views/Voluntarios.vue'
 
 Vue.use(VueRouter);
 var router = new VueRouter({
@@ -29,6 +30,11 @@ var router = new VueRouter({
       path:'/pruebas',
       name:'pruebas',
       component: Pruebas
+    },
+    {
+      path:'/voluntarios',
+      name:'voluntarios',
+      component: Voluntarios
     },
     {
       path:'/tareas',

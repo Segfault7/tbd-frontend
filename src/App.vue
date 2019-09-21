@@ -6,6 +6,8 @@
           <router-link to="/emergencias">Emergencias</router-link> |
           <router-link to="/nuevaemergencia">Nueva emergencia</router-link> |
           <router-link to="/tareas">Tareas</router-link> |
+          <router-link to="/voluntarios">Voluntario</router-link> |
+
           <!--router-link to="/pruebas">Pruebas</router-link-->
         </nav>
       </v-toolbar-title>
@@ -22,6 +24,7 @@
 import Emergencias from './views/Emergencias';
 import NuevaEmergencia from './views/NuevaEmergencia';
 import Tareas from './views/Tareas';
+import Voluntarios from './views/Voluntarios';
 import Pruebas from './views/Pruebas'
 export default {
   name: 'App',
@@ -29,6 +32,7 @@ export default {
     Emergencias,
     NuevaEmergencia,
     Tareas,
+    Voluntarios,
     Pruebas
   },
   data: () => ({
