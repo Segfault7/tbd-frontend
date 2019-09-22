@@ -4,6 +4,7 @@ import Emergencias from './views/Emergencias.vue'
 import NuevaEmergencia from './views/NuevaEmergencia.vue'
 import Pruebas from './views/Pruebas.vue'
 import Tareas from './views/Tareas.vue'
+import NuevaTarea from './views/NuevaTarea.vue'
 import Voluntarios from './views/Voluntarios.vue'
 import Dimensiones from './views/Dimensiones.vue'
 
@@ -36,6 +37,11 @@ var router = new VueRouter({
       path:'/dimensiones',
       name:'dimensiones',
       component: Dimensiones
+    },
+    {
+      path:'/nuevatarea',
+      name:'nuevatarea',
+      component: NuevaTarea
     },
     {
       path:'/tareas',

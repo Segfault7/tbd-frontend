@@ -17,7 +17,7 @@
       </v-col>
       <h1 class="font-weight-black">Tareas</h1>
       <v-col class="d-flex justify-space-around">
-        <v-btn class="mr-4" color = "teal lighten-4">Crear tarea</v-btn>
+        <v-btn class="mr-4" color = "teal lighten-4" to="/nuevatarea">Crear tarea</v-btn>
         <v-btn class="mr-4" to="/">Volver</v-btn>
       </v-col>
       <v-col

@@ -6,6 +6,7 @@
           <router-link to="/emergencias">Emergencias</router-link> |
           <router-link to="/voluntarios">Voluntarios</router-link> |
           <router-link to="/dimensiones">Dimensiones</router-link> |
+          <router-link to="/nuevatarea">NuevaTarea</router-link> |
 
 
           <!--router-link to="/pruebas">Pruebas</router-link-->
@@ -26,6 +27,7 @@
 import Emergencias from './views/Emergencias';
 import NuevaEmergencia from './views/NuevaEmergencia';
 import Tareas from './views/Tareas';
+import NuevaTarea from './views/NuevaTarea';
 import Voluntarios from './views/Voluntarios';
 import Dimensiones from './views/Dimensiones';
 import Pruebas from './views/Pruebas'
@@ -35,6 +37,7 @@ export default {
     Emergencias,
     NuevaEmergencia,
     Tareas,
+    NuevaTarea,
     Voluntarios,
     Dimensiones,
     Pruebas
