@@ -28,8 +28,8 @@
         <v-card>
           <v-card-title>{{item.titulo}}</v-card-title>
           <v-card-text>
-            <p class="text-left">Estado de la tarea: {{item. estado}} <br></p>
-             <p class="text-left">Id del voluntario encargado: {{item. id_voluntario}} <br></p>
+            <p class="text-left">Estado de la tarea: {{item.estado}} <br></p>
+             <p class="text-left">Id del voluntario encargado: {{item.id_voluntario}} <br></p>
           </v-card-text>
           <v-card-actions class="d-flex justify-space-around">
             <v-btn
@@ -55,21 +55,7 @@
 export default{
   data(){
     return {
-      items:[
-       {
-          id_tarea : 1,
-          titulo : "Transporte de agua",
-          estado: "Completado",
-          id_voluntario:"1",
-
-        },
-        {
-           id_tarea : 2,
-          titulo : "Construir media Agua",
-          estado: "En curso",
-          id_voluntario:"2",
-        }
-      ],
+      items:[],
       page:1,
       perPage: 10,
       totalRecords:0,
@@ -90,7 +76,8 @@ export default{
         let offset = this.perPage*(this.page-1);
         let perPage = this.perPage;
         let resource = this.resource;
-        let response = await this.$http.get(`/tareas?offset=${offset}&limit=${perPage}`);
+        let id_emergencia = this.$route.params.id_emergencia;
+        let response = await this.$http.get(`/tareas_de_emergencias?offset=${offset}&limit=${perPage}&id_emergencia=${id_emergencia}`);
         this.items  = response.data;
         console.log('headers', response.headers)
         this.totalRecords = +response.headers['pagination-count']
