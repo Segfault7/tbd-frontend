@@ -4,6 +4,18 @@
       class="pa-2"
       fluid
     >
+    <v-col
+      max-width = "600"
+      max-height = "400"
+      >
+        <v-card color = "#b2b6df">
+          <v-title>{{$route.params.nombre}} {{$route.params.apellido}} </v-title>
+          
+        </v-card>
+      </v-col>
+
+
+
       <h1 class="font-weight-black">Dimensiones</h1>
       <v-col
       max-width="800"

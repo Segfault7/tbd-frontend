@@ -32,7 +32,12 @@
              <p class="text-left">Id del voluntario encargado: {{item. id_voluntario}} <br></p>
           </v-card-text>
           <v-card-actions class="d-flex justify-space-around">
-            <v-btn>Ver Responsable</v-btn>
+            <v-btn
+            :to="{
+                name: 'voluntarios',
+                params: {id_tarea: item.id_tarea,
+                        titulo: item.titulo}}"
+            >Ver Responsable</v-btn>
             <v-btn color="#dfb2cb">Borrar</v-btn>
           </v-card-actions>
         </v-card>

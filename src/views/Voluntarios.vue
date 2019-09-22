@@ -3,8 +3,19 @@
   <div>
     <v-container
       class="pa-2"
-      fluid
-    >
+      fluid >
+
+       <v-col
+      max-width = "600"
+      max-height = "400"
+      >
+        <v-card color = "#b2b6df">
+          <v-title><b>Tarea: {{$route.params.titulo}}</b></v-title>
+        </v-card>
+      </v-col>
+
+
+
       <h1 class="font-weight-black">Voluntarios</h1>
       <v-col
       max-width="800"
@@ -18,7 +29,14 @@
             <p class="text-left">Sexo: {{item. sexo}} <br></p>
           </v-card-text>
           <v-card-actions>
-            <v-btn>Ver Dimensiones</v-btn>
+            <v-btn
+            :to="{
+                name: 'dimensiones',
+                params: {id_voluntario: item.id_voluntario,
+                        nombre: item.nombre,
+                        apellido: item.apellido}}"
+            
+            >Ver Dimensiones</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
