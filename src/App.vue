@@ -4,7 +4,6 @@
       <v-toolbar-title class="headline text-uppercase">
         <nav>
           <router-link to="/emergencias">Emergencias</router-link> |
-          <router-link to="/nuevaemergencia">Nueva emergencia</router-link> |
           <router-link to="/tareas">Tareas</router-link> |
           <router-link to="/voluntarios">Voluntario</router-link> |
           <router-link to="/dimensiones">Dimensiones</router-link> |

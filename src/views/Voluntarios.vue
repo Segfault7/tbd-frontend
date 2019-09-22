@@ -1,11 +1,11 @@
 
 <template>
   <div>
-    <h1 class="font-weight-black">Voluntario</h1>
     <v-container
       class="pa-2"
       fluid
     >
+      <h1 class="font-weight-black">Voluntario</h1>
       <v-col
       max-width="800"
       class="mx-auto"

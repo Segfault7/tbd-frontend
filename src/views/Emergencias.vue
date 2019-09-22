@@ -4,9 +4,9 @@
       fluid
     >
       <h1 class="font-weight-black">Emergencias</h1>
-      <div>
-        <v-btn class="mx-auto" color = "teal lighten-4" align="left">Crear nueva emergencia</v-btn>
-      </div>
+      <v-col>
+        <v-btn class="mx-auto" color = "teal lighten-4" to="/nuevaemergencia">Crear nueva emergencia</v-btn>
+      </v-col>
       <v-col
       max-width="800"
       class="mx-auto"
@@ -17,8 +17,9 @@
           <v-card-text>
             <p class="text-left">Ubicación: {{item. ubicacion}} <br></p>
             Descripción: {{item.descripcion}}</v-card-text>
-          <v-card-actions>
-            <v-btn>Ver tareas</v-btn>
+          <v-card-actions class="d-flex justify-space-around">
+              <v-btn>Ver tareas</v-btn>
+              <v-btn color="#dfb2cb">Borrar</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -41,9 +42,7 @@
 export default{
   data(){
     return {
-      items:[
-
-      ]
+      items:[]
     }
   },
   methods:{

@@ -19,7 +19,8 @@
           outlined
           v-model="emergencia.descripcion"
         ></v-textarea>
-        <v-btn class="mr-4" @click="save">Crear</v-btn>
+        <v-btn class="mr-4" @click="save" color = "teal lighten-4">Crear</v-btn>
+        <v-btn class="mr-4" to="/">Volver</v-btn>
       </form>
       <div v-if="message.length>0" class="form-message">
         {{message}}

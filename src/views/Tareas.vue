@@ -3,7 +3,17 @@
       class="pa-2"
       fluid
     >
+
+      <v-col
+      max-width = "600"
+      max-height = "400"
+      >
+        <v-card color = "#b2b6df">
+          <v-title>Aqui debe ir una emergencia</v-title>
+        </v-card>
+      </v-col>
       <h1 class="font-weight-black">Tareas</h1>
+      <v-btn class="mx-auto" color = "teal lighten-4">Crear tarea</v-btn>
       <v-col
       max-width="800"
       class="mx-auto"
@@ -24,7 +34,7 @@
     <pagination class="paginate" :records="totalRecords" v-model="page" :per-page="perPage" @paginate="paginate" :options="pageOptions"></pagination>
 
     <v-card v-if="items.length==0" class="empty-list">
-      <v-card-title>No se han cargado los datos</v-card-title>
+      <v-card-title>No hay tareas asignadas</v-card-title>
     </v-card>
   </v-container>
 </template>
