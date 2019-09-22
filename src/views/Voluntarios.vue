@@ -54,16 +54,7 @@
 export default{
   data(){
     return {
-      items:[
-       {
-          id_Voluntario : 1,
-          nombre : "Alvin",
-          apellido: "Perez",
-          correo : "alvin.perez@gmail.com",
-          sexo: "Masculino",
-
-        }
-      ],
+      items:[],
       page:1,
       perPage: 10,
       totalRecords:0,

@@ -17,6 +17,13 @@
               @input="$v.email.$touch()"
               @blur="$v.email.$touch()"
             ></v-text-field>
+            <v-text-field
+              v-model="emergencia.tipo"
+              label="Tipo"
+              required
+              @input="$v.email.$touch()"
+              @blur="$v.email.$touch()"
+            ></v-text-field>
             <v-textarea
               outlined
               v-model="emergencia.descripcion"
@@ -26,9 +33,9 @@
           </form>
         </v-card-text>
       </v-card>
-      <div v-if="message.length>0" class="form-message">
+      <span v-if="message.length>0" class="white--text">
         {{message}}
-      </div>
+      </span>
     </v-container>
 </template>
 

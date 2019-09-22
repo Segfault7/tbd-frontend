@@ -16,6 +16,7 @@
           <v-card-title>{{item.nombre}}</v-card-title>
           <v-card-text>
             <p class="text-left">Ubicación: {{item. ubicacion}} <br></p>
+            <p class="text-left">Tipo: {{item. tipo}} <br></p>
             Descripción: {{item.descripcion}}</v-card-text>
           <v-card-actions class="d-flex justify-space-around">
               <v-btn
@@ -24,6 +25,7 @@
                 params: {id_emergencia: item.id_emergencia,
                         nombre: item.nombre,
                         ubicacion: item.ubicacion,
+                        tipo: item.tipo,
                         descripcion: item.descripcion}}"
               >
                 Ver tareas
@@ -35,15 +37,9 @@
 
       <pagination class="paginate" :records="totalRecords" v-model="page" :per-page="perPage" @paginate="paginate" :options="pageOptions"></pagination>
 
-      <v-col
-      max-width="800"
-      class="mx-auto"
-      v-if="items.length==0"
-      >
-        <v-card>
-          <v-card-title>No hay emergencias</v-card-title>
-        </v-card>
-      </v-col>
+      <div v-if="items.length==0" class="empty-list">
+        <em>No se han cargado los datos</em>
+      </div>
   </v-container>
 </template>
 
@@ -51,14 +47,15 @@
 export default{
   data(){
     return {
-      items:[
-        {
-          nombre:"hola",
-          ubicacion:"mundo",
-          descripcion:"esto es una prueba",
-          id_emergencia:"1"
+      items:[],
+      page:1,
+      perPage: 10,
+      totalRecords:0,
+      pageOptions:{
+        texts:{
+          count:""
         }
-      ]
+      }
     }
   },
   methods:{
