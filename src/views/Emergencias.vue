@@ -18,7 +18,16 @@
             <p class="text-left">Ubicación: {{item. ubicacion}} <br></p>
             Descripción: {{item.descripcion}}</v-card-text>
           <v-card-actions class="d-flex justify-space-around">
-              <v-btn>Ver tareas</v-btn>
+              <v-btn
+              :to="{
+                name: 'tareas',
+                params: {id_emergencia: item.id_emergencia,
+                        nombre: item.nombre,
+                        ubicacion: item.ubicacion,
+                        descripcion: item.descripcion}}"
+              >
+                Ver tareas
+              </v-btn>
               <v-btn color="#dfb2cb">Borrar</v-btn>
           </v-card-actions>
         </v-card>
@@ -42,7 +51,20 @@
 export default{
   data(){
     return {
-      items:[]
+      items:[
+        {
+          nombre:"hola",
+          ubicacion:"mundo",
+          descripcion:"esto es una prueba",
+          id_emergencia:"1"
+        },
+        {
+          nombre:"prueba",
+          ubicacion:"incendio",
+          descripcion:"legit",
+          id_emergencia:"1"
+        }
+      ]
     }
   },
   methods:{

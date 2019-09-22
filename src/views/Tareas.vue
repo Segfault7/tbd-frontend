@@ -9,11 +9,17 @@
       max-height = "400"
       >
         <v-card color = "#b2b6df">
-          <v-title>Aqui debe ir una emergencia</v-title>
+          <v-title>{{$route.params.nombre}}</v-title>
+          <v-card-text>
+            <p class="text-left">Ubicación: {{$route.params.ubicacion}} <br></p>
+            Descripción: {{$route.params.descripcion}}</v-card-text>
         </v-card>
       </v-col>
       <h1 class="font-weight-black">Tareas</h1>
-      <v-btn class="mx-auto" color = "teal lighten-4">Crear tarea</v-btn>
+      <v-col class="d-flex justify-space-around">
+        <v-btn class="mr-4" color = "teal lighten-4">Crear tarea</v-btn>
+        <v-btn class="mr-4" to="/">Volver</v-btn>
+      </v-col>
       <v-col
       max-width="800"
       class="mx-auto"
@@ -25,8 +31,9 @@
             <p class="text-left">Estado de la tarea: {{item. estado}} <br></p>
              <p class="text-left">Id del voluntario encargado: {{item. id_voluntario}} <br></p>
           </v-card-text>
-          <v-card-actions>
+          <v-card-actions class="d-flex justify-space-around">
             <v-btn>Ver Responsable</v-btn>
+            <v-btn color="#dfb2cb">Borrar</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

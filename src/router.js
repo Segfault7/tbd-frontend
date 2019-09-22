@@ -28,11 +28,6 @@ var router = new VueRouter({
       component: NuevaEmergencia
     },
     {
-      path:'/pruebas',
-      name:'pruebas',
-      component: Pruebas
-    },
-    {
       path:'/voluntarios',
       name:'voluntarios',
       component: Voluntarios
