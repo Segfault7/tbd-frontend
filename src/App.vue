@@ -4,7 +4,7 @@
       <v-toolbar-title class="headline text-uppercase">
         <nav>
           <router-link to="/emergencias">Emergencias</router-link> |
-          <router-link to="/voluntarios">Voluntario</router-link> |
+          <router-link to="/voluntarios">Voluntarios</router-link> |
           <router-link to="/dimensiones">Dimensiones</router-link> |
 
 
@@ -14,9 +14,11 @@
       <v-spacer></v-spacer>
     </v-app-bar>
 
-    <v-content>
-      <router-view/>
-    </v-content>
+    <v-img src="./assets/background.png" height="auto">
+      <v-content>
+        <router-view/>
+      </v-content>
+    </v-img>
   </v-app>
 </template>
 

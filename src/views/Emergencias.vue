@@ -57,12 +57,6 @@ export default{
           ubicacion:"mundo",
           descripcion:"esto es una prueba",
           id_emergencia:"1"
-        },
-        {
-          nombre:"prueba",
-          ubicacion:"incendio",
-          descripcion:"legit",
-          id_emergencia:"1"
         }
       ]
     }
