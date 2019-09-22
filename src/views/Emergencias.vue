@@ -30,7 +30,7 @@
               >
                 Ver tareas
               </v-btn>
-              <v-btn color="#dfb2cb">Borrar</v-btn>
+              <v-btn color="#dfb2cb" @click="borrar(item.id_emergencia)" to="/emergencias">Borrar</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -75,6 +75,15 @@ export default{
       } catch (e) {
         console.log('error', e)
       }
+    },
+    borrar: function(id){
+      try{
+        this.$http.delete(`/emergencias/` + id);
+        window.location.reload()
+      } catch(e) {
+        console.log('error', e)
+      }
+
     }
   },
   created:function(){
