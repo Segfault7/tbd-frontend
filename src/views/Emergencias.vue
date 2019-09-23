@@ -30,6 +30,14 @@
               >
                 Ver tareas
               </v-btn>
+              <v-btn
+              :to="{
+                name: 'nuevatarea',
+                params: {id_emergencia: item.id_emergencia}}"
+              color = "teal lighten-4"
+              >
+                Crear tarea
+              </v-btn>
               <v-btn color="#dfb2cb" @click="borrar(item.id_emergencia)">Borrar</v-btn>
           </v-card-actions>
         </v-card>

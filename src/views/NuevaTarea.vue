@@ -1,6 +1,11 @@
 <template>
     <v-container>
       <h1 class="font-weight-black">Nueva Tarea</h1>
+      <v-card color = "#b2b6df">
+        <v-card-text>
+          <p class="text-left">id_emergencia: {{$route.params.id_emergencia}} <br></p>
+        </v-card-text>
+      </v-card>
       <v-card>
         <v-card-text>
           <form>
@@ -21,7 +26,7 @@
             ></v-text-field>
 
             <v-btn class="mr-4" @click="save()" color = "teal lighten-4">Crear</v-btn>
-            <v-btn class="mr-4" to="/tareas">Volver</v-btn>
+            <v-btn class="mr-4" to="/">Volver</v-btn>
           </form>
         </v-card-text>
       </v-card>
@@ -45,7 +50,6 @@ export default{
       this.message = "";
       try {
 
-        alert("id_emergencia"+$route.params.id_emergencia);
           let response = await this.$http.post('/tareas', this.tarea);
 /*          alert(""+this.$route.params.id_emergencia);
           tareaEmergencia.id_emergencia = this.$route.params.id_emergencia;
