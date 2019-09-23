@@ -44,78 +44,7 @@
 export default{
   data(){
     return {
-      items:[
-        {
-          id_dimension_voluntario : 1,
-          id_dimension : 1,
-          id_voluntario : 1,
-          nombre : "Fuerza",
-          valor: "3"
-        },
-        {
-          id_dimension_voluntario : 1,
-          id_dimension : 2,
-          id_voluntario : 1,
-          nombre : "Destresa",
-          valor: "3"
-        },
-        {
-          id_dimension_voluntario : 1,
-          id_dimension : 3,
-          id_voluntario : 1,
-          nombre : "Liderazgo",
-          valor: "3"
-        },
-        {
-          id_dimension_voluntario : 1,
-          id_dimension : 4,
-          id_voluntario : 1,
-          nombre : "Motivacion",
-          valor: "3"
-        },
-        {
-          id_dimension_voluntario : 1,
-          id_dimension : 5,
-          id_voluntario : 1,
-          nombre : "Conocimiento",
-          valor: "3"
-        },
-        {
-          id_dimension_voluntario : 1,
-          id_dimension : 6,
-          id_voluntario : 1,
-          nombre : "linterna",
-          valor: "3"
-        },
-        {
-          id_dimension_voluntario : 1,
-          id_dimension : 7,
-          id_voluntario : 1,
-          nombre : "botas",
-          valor: "3"
-        },
-        {
-          id_dimension_voluntario : 1,
-          id_dimension : 8,
-          id_voluntario : 1,
-          nombre : "cuerda",
-          valor: "3"
-        },
-        {
-          id_dimension_voluntario : 1,
-          id_dimension : 9,
-          id_voluntario : 1,
-          nombre : "pala",
-          valor: "3"
-        },
-        {
-          id_dimension_voluntario : 1,
-          id_dimension : 10,
-          id_voluntario : 1,
-          nombre : "alta_estatura",
-          valor: "3"
-        }
-      ],
+      items:[],
       page:1,
       perPage: 10,
       totalRecords:0,
@@ -136,7 +65,8 @@ export default{
         let offset = this.perPage*(this.page-1);
         let perPage = this.perPage;
         let resource = this.resource;
-        let response = await this.$http.get(`/dimension_voluntario?offset=${offset}&limit=${perPage}`);
+        let id_voluntario = this.$route.params.id_voluntario;
+        let response = await this.$http.get(`/dimensiones_de_voluntarios?id_voluntario=${id_voluntario}`);
         this.items  = response.data;
         console.log('headers', response.headers)
         this.totalRecords = +response.headers['pagination-count']
