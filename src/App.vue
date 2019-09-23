@@ -7,6 +7,7 @@
           <router-link to="/voluntarios">Voluntarios</router-link> |
           <router-link to="/dimensiones">Dimensiones</router-link> |
           <router-link to="/nuevatarea">NuevaTarea</router-link> |
+          <router-link to="/nuevovoluntario">NuevoVoluntario</router-link> |
 
 
           <!--router-link to="/pruebas">Pruebas</router-link-->
@@ -29,6 +30,7 @@ import NuevaEmergencia from './views/NuevaEmergencia';
 import Tareas from './views/Tareas';
 import NuevaTarea from './views/NuevaTarea';
 import Voluntarios from './views/Voluntarios';
+import NuevoVoluntario from './views/NuevoVoluntario';
 import Dimensiones from './views/Dimensiones';
 import Pruebas from './views/Pruebas'
 export default {
@@ -39,6 +41,7 @@ export default {
     Tareas,
     NuevaTarea,
     Voluntarios,
+    NuevoVoluntario,
     Dimensiones,
     Pruebas
   },

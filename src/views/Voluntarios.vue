@@ -13,6 +13,7 @@
           <v-title><b>Tarea: {{$route.params.titulo}}</b></v-title>
         </v-card>
       </v-col>
+       <v-btn class="mx-auto" color = "teal lighten-4" to="/nuevovoluntario">Crear nuevo voluntario</v-btn>
 
 
 
@@ -38,6 +39,7 @@
             
             >Ver Dimensiones</v-btn>
           </v-card-actions>
+          <v-btn color="#dfb2cb" @click="borrar(item.id_voluntario)" to="/voluntarios">Borrar</v-btn>
         </v-card>
       </v-col>
     </v-container>
@@ -82,7 +84,19 @@ export default{
       } catch (e) {
         console.log('error', e)
       }
+    },
+    borrar: function(id){
+      try{
+        this.$http.delete(`/voluntarios/` + id);
+        window.location.reload()
+      } catch(e) {
+        console.log('error', e)
+      }
+
     }
+    
+
+
   },
   created:function(){
 

@@ -5,6 +5,7 @@ import NuevaEmergencia from './views/NuevaEmergencia.vue'
 import Pruebas from './views/Pruebas.vue'
 import Tareas from './views/Tareas.vue'
 import NuevaTarea from './views/NuevaTarea.vue'
+import NuevoVoluntario from './views/NuevoVoluntario.vue'
 import Voluntarios from './views/Voluntarios.vue'
 import Dimensiones from './views/Dimensiones.vue'
 
@@ -42,6 +43,11 @@ var router = new VueRouter({
       path:'/nuevatarea',
       name:'nuevatarea',
       component: NuevaTarea
+    },
+    {
+      path:'/nuevovoluntario',
+      name:'nuevovoluntario',
+      component: NuevoVoluntario
     },
     {
       path:'/tareas',
