@@ -48,6 +48,8 @@ export default{
   methods:{
     save:async function(){
       this.message = "";
+      let aux = this.$route.params.id_emergencia;
+      this.tarea.id_emergencia = aux;
       try {
 
           let response = await this.$http.post('/tareas', this.tarea);
