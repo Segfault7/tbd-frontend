@@ -11,29 +11,22 @@
             ></v-text-field>
             <v-text-field
               v-model="voluntario.apellido"
-              :error-messages="emailErrors"
               label="Apellido"
               required
-              @input="$v.email.$touch()"
-              @blur="$v.email.$touch()"
             ></v-text-field>
             <v-text-field
               v-model="voluntario.correo"
               label="Correo"
               required
-              @input="$v.email.$touch()"
-              @blur="$v.email.$touch()"
             ></v-text-field>
             <v-text-field
               v-model="voluntario.sexo"
               label="Sexo"
               required
-              @input="$v.email.$touch()"
-              @blur="$v.email.$touch()"
             ></v-text-field>
-          
+
             <v-btn class="mr-4" @click="save" color = "teal lighten-4">Crear</v-btn>
-            <v-btn class="mr-4" to="/">Volver</v-btn>
+            <v-btn class="mr-4" to="/voluntarios">Volver</v-btn>
           </form>
         </v-card-text>
       </v-card>

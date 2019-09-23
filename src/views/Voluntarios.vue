@@ -1,23 +1,10 @@
 
 <template>
-  <div>
     <v-container
       class="pa-2"
       fluid >
-
-       <v-col
-      max-width = "600"
-      max-height = "400"
-      >
-        <v-card color = "#b2b6df">
-          <v-title><b>Tarea: {{$route.params.titulo}}</b></v-title>
-        </v-card>
-      </v-col>
-       <v-btn class="mx-auto" color = "teal lighten-4" to="/nuevovoluntario">Crear nuevo voluntario</v-btn>
-
-
-
       <h1 class="font-weight-black">Voluntarios</h1>
+      <v-btn class="mx-auto" color = "teal lighten-4" to="/nuevovoluntario">Crear nuevo voluntario</v-btn>
       <v-col
       max-width="800"
       class="mx-auto"
@@ -29,27 +16,26 @@
             <p class="text-left">Correo: {{item. correo}} <br></p>
             <p class="text-left">Sexo: {{item. sexo}} <br></p>
           </v-card-text>
-          <v-card-actions>
+          <v-card-actions class="d-flex justify-space-around">
             <v-btn
             :to="{
                 name: 'dimensiones',
                 params: {id_voluntario: item.id_voluntario,
                         nombre: item.nombre,
                         apellido: item.apellido}}"
-            
+
             >Ver Dimensiones</v-btn>
+            <v-btn color="#dfb2cb" @click="borrar(item.id_voluntario)" to="/voluntarios">Borrar</v-btn>
           </v-card-actions>
-          <v-btn color="#dfb2cb" @click="borrar(item.id_voluntario)" to="/voluntarios">Borrar</v-btn>
         </v-card>
       </v-col>
-    </v-container>
 
     <pagination class="paginate" :records="totalRecords" v-model="page" :per-page="perPage" @paginate="paginate" :options="pageOptions"></pagination>
 
     <div v-if="items.length==0" class="empty-list">
       <em>No se han cargado los datos</em>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -94,7 +80,7 @@ export default{
       }
 
     }
-    
+
 
 
   },

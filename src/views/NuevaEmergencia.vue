@@ -3,7 +3,7 @@
       <h1 class="font-weight-black">Nueva emergencia</h1>
       <v-card>
         <v-card-text>
-          <form>
+          <v-form>
             <v-text-field
               v-model="emergencia.nombre"
               label="Titulo"
@@ -11,18 +11,15 @@
             ></v-text-field>
             <v-text-field
               v-model="emergencia.ubicacion"
-              :error-messages="emailErrors"
               label="Ubicacion"
               required
-              @input="$v.email.$touch()"
-              @blur="$v.email.$touch()"
+
             ></v-text-field>
             <v-text-field
               v-model="emergencia.tipo"
               label="Tipo"
               required
-              @input="$v.email.$touch()"
-              @blur="$v.email.$touch()"
+
             ></v-text-field>
             <v-textarea
               outlined
@@ -30,7 +27,7 @@
             ></v-textarea>
             <v-btn class="mr-4" @click="save" color = "teal lighten-4">Crear</v-btn>
             <v-btn class="mr-4" to="/">Volver</v-btn>
-          </form>
+          </v-form>
         </v-card-text>
       </v-card>
       <span v-if="message.length>0" class="white--text">

@@ -30,7 +30,7 @@
               >
                 Ver tareas
               </v-btn>
-              <v-btn color="#dfb2cb" @click="borrar(item.id_emergencia)" to="/emergencias">Borrar</v-btn>
+              <v-btn color="#dfb2cb" @click="borrar(item.id_emergencia)">Borrar</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

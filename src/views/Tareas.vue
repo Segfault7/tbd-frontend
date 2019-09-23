@@ -3,19 +3,19 @@
       class="pa-2"
       fluid
     >
-
+      <h1 class="font-weight-black">Tareas</h1>
       <v-col
       max-width = "600"
       max-height = "400"
       >
         <v-card color = "#b2b6df">
-          <v-title>{{$route.params.nombre}}</v-title>
+          <h2>{{$route.params.nombre}}</h2>
           <v-card-text>
             <p class="text-left">Ubicación: {{$route.params.ubicacion}} <br></p>
+            <p class="text-left">Tipo: {{$route.params.tipo}} <br></p>
             Descripción: {{$route.params.descripcion}}</v-card-text>
         </v-card>
       </v-col>
-      <h1 class="font-weight-black">Tareas</h1>
       <v-col class="d-flex justify-space-around">
         <v-btn class="mr-4" color = "teal lighten-4" to="/nuevatarea">Crear tarea</v-btn>
         <v-btn class="mr-4" to="/">Volver</v-btn>
@@ -38,7 +38,7 @@
                 params: {id_tarea: item.id_tarea,
                         titulo: item.titulo}}"
             >Ver Responsable</v-btn>
-            <v-btn color="#dfb2cb">Borrar</v-btn>
+            <v-btn color="#dfb2cb" @click="borrar(item.id_tarea)">Borrar</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -84,6 +84,15 @@ export default{
       } catch (e) {
         console.log('error', e)
       }
+    },
+    borrar: function(id){
+      try{
+        this.$http.delete(`/tareas/` + id);
+        window.location.reload()
+      } catch(e) {
+        console.log('error', e)
+      }
+
     }
   },
   created:function(){

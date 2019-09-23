@@ -5,10 +5,6 @@
         <nav>
           <router-link to="/emergencias">Emergencias</router-link> |
           <router-link to="/voluntarios">Voluntarios</router-link> |
-          <router-link to="/dimensiones">Dimensiones</router-link> |
-          <router-link to="/nuevatarea">NuevaTarea</router-link> |
-          <router-link to="/nuevovoluntario">NuevoVoluntario</router-link> |
-
 
           <!--router-link to="/pruebas">Pruebas</router-link-->
         </nav>

@@ -11,16 +11,16 @@
             ></v-text-field>
             <br>
             <select align="center" name="Voluntarios">
-                <option value="1">Voluntario 1</option> 
+                <option value="1">Voluntario 1</option>
                 <option value="2">Voluntario 2</option>
-                <option value="1">Voluntario 3</option> 
-                <option value="2">Voluntario 4</option>  
+                <option value="1">Voluntario 3</option>
+                <option value="2">Voluntario 4</option>
                 </select>
                 <br>
 
-           
+
             <v-btn class="mr-4" @click="save" color = "teal lighten-4">Crear</v-btn>
-            <v-btn class="mr-4" to="/">Volver</v-btn>
+            <v-btn class="mr-4" to="/tareas">Volver</v-btn>
           </form>
         </v-card-text>
       </v-card>
