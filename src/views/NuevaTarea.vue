@@ -20,7 +20,7 @@
               required
             ></v-text-field>
 
-            <v-btn class="mr-4" @click="save" color = "teal lighten-4">Crear</v-btn>
+            <v-btn class="mr-4" @click="save()" color = "teal lighten-4">Crear</v-btn>
             <v-btn class="mr-4" to="/tareas">Volver</v-btn>
           </form>
         </v-card-text>
@@ -36,7 +36,7 @@ export default{
   data:function(){
     return{
       tarea:{},
-      tareaEmergencia: {},
+//      tareaEmergencia: {},
       message:""
     }
   },
@@ -44,10 +44,17 @@ export default{
     save:async function(){
       this.message = "";
       try {
+
+        alert("id_emergencia"+$route.params.id_emergencia);
           let response = await this.$http.post('/tareas', this.tarea);
-          tareaEmergencia.id_emergencia = $route.params.id_emergencia;
+/*          alert(""+this.$route.params.id_emergencia);
+          tareaEmergencia.id_emergencia = this.$route.params.id_emergencia;
+          alert("hola");
+          alert(""+tareaEmergencia.id_emergencia);
           tareaEmergencia.id_tarea = response.id_tarea;
+          alert(""+tareaEmergencia.id_tarea);
           let responseB = await this.$http.post('/emergencia_tarea', this.tareaEmergencia);
+*/
           this.message = "Se ha agregado existosamente"
       } catch (e) {
         console.log('error',e)

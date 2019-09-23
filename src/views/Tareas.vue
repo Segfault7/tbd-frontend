@@ -17,7 +17,13 @@
         </v-card>
       </v-col>
       <v-col class="d-flex justify-space-around">
-        <v-btn class="mr-4" color = "teal lighten-4" to="/nuevatarea">Crear tarea</v-btn>
+        <v-btn
+        class="mr-4"
+        color = "teal lighten-4"
+        :to="{
+          name: 'nuevatarea',
+          params: {id_emergencia: this.$route.params.id_emergencia}}"
+        >Crear tarea</v-btn>
         <v-btn class="mr-4" to="/">Volver</v-btn>
       </v-col>
       <v-col
@@ -55,6 +61,7 @@
 export default{
   data(){
     return {
+      id_emergencia : this.$route.params.id_emergencia,
       items:[],
       page:1,
       perPage: 10,
