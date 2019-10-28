@@ -15,6 +15,8 @@
           <v-card-text>
             <p class="text-left">Correo: {{item. correo}} <br></p>
             <p class="text-left">Sexo: {{item. sexo}} <br></p>
+            <p class="text-left">Latitud: {{item. latitude}} <br></p>
+            <p class="text-left">Longitud: {{item. longitude}} <br></p>
           </v-card-text>
           <v-card-actions class="d-flex justify-space-around">
             <v-btn

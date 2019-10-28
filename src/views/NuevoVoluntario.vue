@@ -25,6 +25,18 @@
               required
             ></v-text-field>
 
+            <v-text-field
+              v-model="voluntario.latitude"
+              label="Latitud"
+              required
+            ></v-text-field>
+
+            <v-text-field
+              v-model="voluntario.longitude"
+              label="Longitud"
+              required
+            ></v-text-field>
+
             <v-btn class="mr-4" @click="save" color = "teal lighten-4">Crear</v-btn>
             <v-btn class="mr-4" to="/voluntarios">Volver</v-btn>
           </form>
@@ -50,6 +62,8 @@ export default{
       try {
           let response = await this.$http.post('/voluntarios', this.voluntario);
           this.message = "Se ha agregado existosamente"
+          alert('El voluntario ' + this.message + '!')
+          this.$router.push('/voluntarios');
       } catch (e) {
         console.log('error',e)
         this.message= "Ha ocurrido un error"
