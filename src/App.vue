@@ -28,7 +28,8 @@ import NuevaTarea from './views/NuevaTarea';
 import Voluntarios from './views/Voluntarios';
 import NuevoVoluntario from './views/NuevoVoluntario';
 import Dimensiones from './views/Dimensiones';
-import Pruebas from './views/Pruebas'
+import Pruebas from './views/Pruebas';
+import MapaV from './views/MapaV'
 export default {
   name: 'App',
   components: {

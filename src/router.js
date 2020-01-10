@@ -2,12 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Emergencias from './views/Emergencias.vue'
 import NuevaEmergencia from './views/NuevaEmergencia.vue'
-import Pruebas from './views/Pruebas.vue'
+//import Pruebas from './views/Pruebas.vue'
 import Tareas from './views/Tareas.vue'
 import NuevaTarea from './views/NuevaTarea.vue'
 import NuevoVoluntario from './views/NuevoVoluntario.vue'
 import Voluntarios from './views/Voluntarios.vue'
 import Dimensiones from './views/Dimensiones.vue'
+
 
 Vue.use(VueRouter);
 var router = new VueRouter({
@@ -53,6 +54,11 @@ var router = new VueRouter({
       path:'/tareas',
       name:'tareas',
       component: Tareas
+    },
+    {
+      path:'/mapavoluntario',
+      name:'mapavoluntario',
+      component: ()=> import('./views/MapaV.vue')
     }
   ]
 })
