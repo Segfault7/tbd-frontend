@@ -15,7 +15,8 @@
         <v-card>
           <v-card-title>{{item.nombre}}</v-card-title>
           <v-card-text>
-            <p class="text-left">Ubicación: {{item. ubicacion}} <br></p>
+            <p class="text-left">Latitud: {{item. latitude}} <br></p>
+            <p class="text-left">Longitude: {{item. longitude}} <br></p>
             <p class="text-left">Tipo: {{item. tipo}} <br></p>
             Descripción: {{item.descripcion}}</v-card-text>
           <v-card-actions class="d-flex justify-space-around">
@@ -76,6 +77,7 @@ export default{
         let offset = this.perPage*(this.page-1);
         let perPage = this.perPage;
         let resource = this.resource;
+        console.log(resource)
         let response = await this.$http.get(`/emergencias?offset=${offset}&limit=${perPage}`);
         this.items  = response.data;
         console.log('headers', response.headers)

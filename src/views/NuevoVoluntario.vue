@@ -22,13 +22,16 @@
             <v-text-field
               v-model="voluntario.correo"
               label="Correo"
+              type="email"
               required
             ></v-text-field>
-            <v-text-field
-              v-model="voluntario.sexo"
-              label="Sexo"
-              required
-            ></v-text-field>
+            
+
+
+            <v-select v-model="voluntario.sexo" :items="sexo" hide-details
+          label="Seleccione un sexo."
+          single-line
+        ></v-select>
 
             <v-text-field
               v-model="latitud"
@@ -55,7 +58,7 @@
       </v-card>
     </v-flex>
     <v-flex xs12 sm6>
-      <h2>Elegir ubicación del voluntario: </h2>
+      <h2 style="color:White;">Elegir ubicación del voluntario: </h2>
       <v-card>
         <div id="mapContainer">
         </div>
@@ -78,6 +81,12 @@ export default{
   data(){
     return{
       message:"",
+      sexo:[
+      
+      {value: 'Male', text: 'Hombre'},
+      {value: 'Female', text: 'Mujer'},
+      {value: 'Other', text: 'Otro'},
+      ],
       latitud:"",
       longitud:"",
       voluntario:{},
@@ -89,6 +98,8 @@ export default{
       this.message = "";
       this.voluntario.latitude = this.latitud;
       this.voluntario.longitude = this.longitud;
+
+
       try {
           let response = await this.$http.post('/voluntarios', this.voluntario);
           console.log(response)
@@ -97,7 +108,8 @@ export default{
           this.$router.push('/voluntarios');
       } catch (e) {
         console.log('error',e)
-        this.message= "Ha ocurrido un error"
+        this.message= "Ha ocurrido un error";
+        
       }
     }
   },//FIN METODOS
