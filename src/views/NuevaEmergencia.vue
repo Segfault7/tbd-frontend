@@ -51,7 +51,6 @@
         <div id="mapContainer">
         </div>
       </v-card>
-      <p style="color:White;">*Antes de seleccionar ubicación, rellenar el campo de radio.</p>
       <p style="color:White;">*PD: Si selecciona más de una ubicación, quedará registrada la última que haya realizado.</p>
     </v-flex>
     </v-layout>
@@ -116,30 +115,25 @@ export default{
 
     })
 
-    //var marker = L.marker([-51.760928, -72.482996]).addTo(this.map);
+    var marker = {};
     this.map.doubleClickZoom.disable()
     this.map.on('dblclick', e=>{
       let latLng = this.map.mouseEventToLatLng(e.originalEvent)
       //Marca el circulo en el mapa
-      L.circle([latLng.lat, latLng.lng],{
-        icon: iconMarker,
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: this.radio*1000
-      }).addTo(this.map)
 
       //Marca la imagen de GPS dentro del circulo
-      L.marker([latLng.lat, latLng.lng]).addTo(this.map)
-
+      if(marker != undefined){
+          this.map.removeLayer(marker);
+      };
+      marker = L.marker([latLng.lat, latLng.lng]).addTo(this.map);
 
       var latitud = latLng.lat;
       var longitud = latLng.lng;
       //Hay que hacerlo al reves, porque leaflet intercambia los datos, latitud=longitud, longitud=latitud
-      this.latitud = longitud; 
+      this.latitud = longitud;
       this.longitud =  latitud;
       //document.getElementById('latitud').value = this.latitud;
-      //document.getElementById('longitud').value= this.longitud; 
+      //document.getElementById('longitud').value= this.longitud;
     })
   },
   beforeDestroy() {
