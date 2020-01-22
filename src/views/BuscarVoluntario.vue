@@ -84,6 +84,7 @@ export default{
       tipo: "",
       message:"",
       radio:"",
+      markerGroup:{},
       map: null,
       items:[], //guarda todas las emergencias
       itemsEmergencia:[],//Guarda la emergencia dependiendo del id
@@ -130,7 +131,7 @@ export default{
     getVoluntarios: async function(){
       this.message = "";
 
-
+      this.markerGroup = L.layerGroup().addTo(this.map); 
       try{
         
         let response = await this.$http.get(`/voluntariosMapa`);
@@ -149,7 +150,7 @@ export default{
             let radio = this.radio;
 
             //Marca la imagen de GPS dentro del circulo
-            var circle = L.marker([this.longitud,this.latitud],{icon: iconMarker}).addTo(this.map)
+            var circle = L.marker([this.longitud,this.latitud],{icon: iconMarker}).addTo(this.markerGroup)
 
             L.circle([this.longitud,this.latitud],{ //Se ponen al revez, longitu y latitud
             
@@ -157,7 +158,7 @@ export default{
             fillColor: '#f03',
             fillOpacity: 0.2,
             radius: radio*1000
-            }).addTo(this.map)
+            }).addTo(this.markerGroup)
 
             
 
@@ -169,7 +170,7 @@ export default{
                 console.log(radio)
                 if (marker.getLatLng().distanceTo(circle.getLatLng()) <= radio*1000) {
                   marker.bindPopup('Nombre: '+ voluntario.nombre + ', Apellido: '+voluntario.apellido)
-                  .addTo(this.map)
+                  .addTo(this.markerGroup)
                   console.log(voluntario)
                 }else{
                   console.log("no esta dentro del mapa.")
@@ -194,8 +195,8 @@ export default{
 
     },
     onclick:function(){
-      
 
+      this.markerGroup.clearLayers();
 
     }
   }, 
