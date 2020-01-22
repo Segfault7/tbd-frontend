@@ -108,6 +108,7 @@ export default{
 
       try{
 
+
         let id = this.emergenciaBuscada;
 
         let response = await this.$http.get(`/emergencias/` + id);
@@ -119,7 +120,7 @@ export default{
           
           
         }
-
+        this.markerGroup.clearLayers(); //Se eliminan todos los puntos del mapa, al cambiar select
 
 
       }catch(e){
