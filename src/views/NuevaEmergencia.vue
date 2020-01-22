@@ -29,12 +29,6 @@
             ></v-text-field>
 
             <v-text-field
-              v-model="radio"
-              id="radio"
-              label="Radio en KM (Ej. 15)"
-              
-            ></v-text-field>
-            <v-text-field
               v-model="emergencia.tipo"
               label="Tipo"
               required

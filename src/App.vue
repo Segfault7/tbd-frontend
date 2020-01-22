@@ -5,6 +5,7 @@
         <nav>
           <router-link to="/emergencias">Emergencias</router-link> |
           <router-link to="/voluntarios">Voluntarios</router-link> |
+          <router-link to="/buscarvoluntarios">Buscar voluntarios</router-link> |
 
           <!--router-link to="/pruebas">Pruebas</router-link-->
         </nav>

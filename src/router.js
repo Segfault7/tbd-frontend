@@ -59,6 +59,11 @@ var router = new VueRouter({
       path:'/mapavoluntario',
       name:'mapavoluntario',
       component: ()=> import('./views/MapaV.vue')
+    },
+    {
+      path:'/buscarvoluntarios',
+      name:'buscarVoluntarios',
+      component: ()=> import('./views/BuscarVoluntario.vue')
     }
   ]
 })
