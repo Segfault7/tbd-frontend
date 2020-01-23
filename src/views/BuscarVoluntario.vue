@@ -44,6 +44,16 @@
 
             ></v-text-field>
 
+<<<<<<< Updated upstream
+=======
+            <v-text-field
+                    v-model="cantidad"
+                    id="cantidad"
+                    label="N° de voluntarios"
+
+            ></v-text-field>
+            
+>>>>>>> Stashed changes
             <v-btn class="mr-4" @click="getVoluntarios()" color = "teal lighten-4">Buscar</v-btn>
             <v-btn class="mr-4" to="/">Volver</v-btn>
             <v-btn class="mr-5" @click="onclick()">Resetear puntos</v-btn>
@@ -83,7 +93,12 @@ export default{
       tipo: "",
       message:"",
       radio:"",
+<<<<<<< Updated upstream
       markerGroup: undefined,
+=======
+      cantidad:"",
+      markerGroup:{},
+>>>>>>> Stashed changes
       map: null,
       items:[], //guarda todas las emergencias
       itemsEmergencia:[],//Guarda la emergencia dependiendo del id
@@ -137,8 +152,16 @@ export default{
       this.message = "";
       this.markerGroup = L.layerGroup().addTo(this.map);
       try{
+<<<<<<< Updated upstream
 
         let response = await this.$http.get(`/voluntariosMapa`);
+=======
+        let cantidad = this.cantidad;
+        let id = this.emergenciaBuscada;
+        console.log(cantidad);
+        console.log(id);
+        let response = await this.$http.get('/voluntariosMapaN?id=' +id+'&total='+cantidad);
+>>>>>>> Stashed changes
         this.voluntarios  = response.data;
         let iconMarker = L.icon({
           iconUrl:'https://fotos.subefotos.com/2e005ecb9da06991f4fafb24ea0282d7o.png',
@@ -164,6 +187,7 @@ export default{
             radius: radio*1000
             }).addTo(this.markerGroup)
 
+<<<<<<< Updated upstream
             for (var voluntario of this.voluntarios){
                 var marker = new L.marker([voluntario.longitude,voluntario.latitude])
 
@@ -175,6 +199,19 @@ export default{
                 }else{
                   console.log("no esta dentro del mapa.")
                 }
+=======
+            for (var voluntario of this.voluntarios) {
+              var marker = new L.marker([voluntario.longitude, voluntario.latitude])
+
+              console.log(radio)
+              if (marker.getLatLng().distanceTo(circle.getLatLng()) <= radio * 1000) {
+                marker.bindPopup('Nombre: ' + voluntario.nombre + ', Apellido: ' + voluntario.apellido)
+                        .addTo(this.markerGroup)
+                console.log(voluntario)
+              } else {
+                console.log("no esta dentro del mapa.")
+              }
+>>>>>>> Stashed changes
 
             }
 
