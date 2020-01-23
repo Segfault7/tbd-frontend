@@ -9,64 +9,64 @@
       <v-card>
         <v-card-text>
           <v-form>
-
+           
             <h5>Seleccione una emergencia</h5>
           <select name="Emergencia" v-model="emergenciaBuscada" @change="getEmergencia($event)" class="form-control">
               <option v-for ="item in items" :key ="item.id_emergencia" :value="item.id_emergencia">{{item.nombre}}</option>
           </select>
-
+          
           <v-text-field
               :value="this.tipo"
               label="Tipo"
               disabled
-
+              
             ></v-text-field>
 
           <v-text-field
               :value="this.latitud"
               label="Latitude"
               disabled
-
+              
             ></v-text-field>
 
             <v-text-field
               :value="this.longitud"
               label="Longitude"
               disabled
-
+              
             ></v-text-field>
-
+            
 
             <v-text-field
               v-model="radio"
               id="radio"
               label="Radio en KM (Ej. 15)"
 
+              
             ></v-text-field>
 
-<<<<<<< Updated upstream
-=======
             <v-text-field
                     v-model="cantidad"
                     id="cantidad"
-                    label="N° de voluntarios"
+                    label="N° de voluntarios (Ej. 10)"
 
             ></v-text-field>
             
->>>>>>> Stashed changes
-            <v-btn class="mr-4" @click="getVoluntarios()" color = "teal lighten-4">Buscar</v-btn>
+            <v-btn id="boton" class="mr-4" @click="getVoluntarios()" color = "teal lighten-4">Buscar por radio</v-btn>
+            <v-btn id= "botonN" class="mr-4" @click="getNVoluntarios()" color = "teal lighten-4">Buscar N voluntarios</v-btn>
             <v-btn class="mr-4" to="/">Volver</v-btn>
-            <v-btn class="mr-5" @click="onclick()">Resetear puntos</v-btn>
+            
           </v-form>
         </v-card-text>
       </v-card>
       </v-flex>
       <v-flex xs12 sm6>
+      
       <v-card>
         <div id="mapContainer">
         </div>
       </v-card>
-
+      
     </v-flex>
     </v-layout>
 
@@ -92,13 +92,10 @@ export default{
       longitud:"",
       tipo: "",
       message:"",
-      radio:"",
-<<<<<<< Updated upstream
-      markerGroup: undefined,
-=======
       cantidad:"",
-      markerGroup:{},
->>>>>>> Stashed changes
+      disabled: 0,
+      radio:"",
+      markerGroup:undefined,
       map: null,
       items:[], //guarda todas las emergencias
       itemsEmergencia:[],//Guarda la emergencia dependiendo del id
@@ -110,12 +107,12 @@ export default{
   methods:{
       getData: async function(){ //Obtiene todas las emergencias
       try{
-
+        
         let response = await this.$http.get(`/emergencias`);
         this.items  = response.data;
         console.log('headers', response.headers)
 
-
+        
       } catch (e) {
         console.log('error', e)
       }
@@ -123,7 +120,6 @@ export default{
     getEmergencia: async function(){ //Obtiene una emergencia
 
       try{
-
 
         let id = this.emergenciaBuscada;
 
@@ -133,11 +129,11 @@ export default{
           this.latitud = this.itemsEmergencia[i].latitude;
           this.longitud = this.itemsEmergencia[i].longitude;
           this.tipo = this.itemsEmergencia[i].tipo;
-
-
+          
+          
         }
-        this.markerGroup.clearLayers(); //Se eliminan todos los puntos del mapa, al cambiar select
 
+        this.markerGroup.clearLayers(); //Se eliminan todos los puntos del mapa, al cambiar select
 
       }catch(e){
         console.log('error', e)
@@ -148,20 +144,18 @@ export default{
     getVoluntarios: async function(){
       if(this.markerGroup != undefined){
           this.markerGroup.clearLayers();
-      };
+      }
       this.message = "";
-      this.markerGroup = L.layerGroup().addTo(this.map);
-      try{
-<<<<<<< Updated upstream
 
+
+      if (this.radio =="") {
+        alert("Ingresar radio de emergencia.");
+      }else{
+
+      this.markerGroup = L.layerGroup().addTo(this.map); 
+      try{
+        
         let response = await this.$http.get(`/voluntariosMapa`);
-=======
-        let cantidad = this.cantidad;
-        let id = this.emergenciaBuscada;
-        console.log(cantidad);
-        console.log(id);
-        let response = await this.$http.get('/voluntariosMapaN?id=' +id+'&total='+cantidad);
->>>>>>> Stashed changes
         this.voluntarios  = response.data;
         let iconMarker = L.icon({
           iconUrl:'https://fotos.subefotos.com/2e005ecb9da06991f4fafb24ea0282d7o.png',
@@ -177,20 +171,17 @@ export default{
 
             //Marca la imagen de GPS dentro del circulo
             this.circunferencia = L.marker([this.longitud,this.latitud],{icon: iconMarker}).addTo(this.markerGroup)
-
-
             this.llenado = L.circle([this.longitud,this.latitud],{ //Se ponen al reves, longitu y latitud
-
+            
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.2,
             radius: radio*1000
             }).addTo(this.markerGroup)
 
-<<<<<<< Updated upstream
             for (var voluntario of this.voluntarios){
                 var marker = new L.marker([voluntario.longitude,voluntario.latitude])
-
+                
                 console.log(radio)
                 if (marker.getLatLng().distanceTo(this.circunferencia.getLatLng()) <= radio*1000) {
                   marker.bindPopup('Nombre: '+ voluntario.nombre + ', Apellido: '+voluntario.apellido)
@@ -199,20 +190,56 @@ export default{
                 }else{
                   console.log("no esta dentro del mapa.")
                 }
-=======
-            for (var voluntario of this.voluntarios) {
-              var marker = new L.marker([voluntario.longitude, voluntario.latitude])
+                
+            }
+        
+        }
+      } catch (e) {
+        console.log('error', e)
+      }
+    }
+    },
+    getNVoluntarios: async function(){
+      if(this.markerGroup != undefined){
+          this.markerGroup.clearLayers();
+      };
+      this.message = "";
+      this.markerGroup = L.layerGroup().addTo(this.map);
 
-              console.log(radio)
-              if (marker.getLatLng().distanceTo(circle.getLatLng()) <= radio * 1000) {
-                marker.bindPopup('Nombre: ' + voluntario.nombre + ', Apellido: ' + voluntario.apellido)
-                        .addTo(this.markerGroup)
-                console.log(voluntario)
-              } else {
-                console.log("no esta dentro del mapa.")
-              }
->>>>>>> Stashed changes
+      if (this.cantidad =="") {
+        alert("Ingresar número voluntarios.");
+      }else{
 
+      try{
+
+        let cantidad = this.cantidad; //Cantidad de voluntarios cercanos
+        let id = this.emergenciaBuscada; //Id de la emergencia buscada
+        console.log(cantidad);
+        console.log(id);
+        let response = await this.$http.get('/voluntariosMapaN?id=' +id+'&total='+cantidad);
+        this.voluntarios  = response.data; //Se obtienen los N voluntarios cercanos
+
+        let iconMarker = L.icon({
+          iconUrl:'https://fotos.subefotos.com/2e005ecb9da06991f4fafb24ea0282d7o.png',
+          iconSize: [30,40],
+          iconAnchor: [15, 40]
+
+        })
+
+        for (var i = this.itemsEmergencia.length - 1; i >= 0; i--) {//SE EJECUTA UNA VEZ
+            this.latitud = this.itemsEmergencia[i].latitude; //Latitud emergencia
+            this.longitud = this.itemsEmergencia[i].longitude;//Longitud emergencia
+
+            //Marca la imagen de GPS dentro del circulo
+            this.circunferencia = L.marker([this.longitud,this.latitud],{icon: iconMarker}).addTo(this.markerGroup)
+
+
+            for (var voluntario of this.voluntarios){ //Se agregan directamente al mapa, vienen del back
+                var marker = new L.marker([voluntario.longitude,voluntario.latitude])
+                marker.bindPopup('Nombre: '+ voluntario.nombre + ', Apellido: '+voluntario.apellido)
+                .addTo(this.markerGroup)
+                console.log(marker)
+                
             }
 
         }
@@ -224,6 +251,7 @@ export default{
       } catch (e) {
         console.log('error', e)
       }
+    }
 
     },
     onclick:function(){
@@ -231,11 +259,12 @@ export default{
       this.markerGroup.clearLayers();
 
     }
-  },
+  }, 
   //FIN METODOS
   created:function(){
 
     this.getData();
+    
   },
 
   mounted() {
@@ -245,9 +274,9 @@ export default{
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
 
-
+    
     this.map.doubleClickZoom.disable()
-
+    
   },
   beforeDestroy() {
     if (this.map) {

@@ -63,7 +63,7 @@
         <div id="mapContainer">
         </div>
       </v-card>
-      <p style="color:White;">*PD: Si selecciona más de una ubicación, quedará registrada la última que haya realizado.</p>
+      
     </v-flex>
   </v-layout>
       <span v-if="message.length>0" class="white--text">
