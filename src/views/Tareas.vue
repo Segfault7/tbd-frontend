@@ -82,6 +82,7 @@ export default{
         let offset = this.perPage*(this.page-1);
         let perPage = this.perPage;
         let resource = this.resource;
+        console.log(resource)
         let id_emergencia = this.$route.params.id_emergencia;
         let response = await this.$http.get(`/tareas_de_emergencias?offset=${offset}&limit=${perPage}&id_emergencia=${id_emergencia}`);
         this.items  = response.data;

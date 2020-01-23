@@ -202,7 +202,7 @@ export default{
     getNVoluntarios: async function(){
       if(this.markerGroup != undefined){
           this.markerGroup.clearLayers();
-      };
+      }
       this.message = "";
       this.markerGroup = L.layerGroup().addTo(this.map);
 

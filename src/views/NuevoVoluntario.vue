@@ -128,7 +128,7 @@ export default{
       let latLng = this.map.mouseEventToLatLng(e.originalEvent)
       if(marker != undefined){
           this.map.removeLayer(marker);
-      };
+      }
 
 
       marker = L.marker([latLng.lat, latLng.lng]).addTo(this.map)

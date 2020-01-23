@@ -64,6 +64,7 @@ export default{
       try {
 
           let response = await this.$http.post('/tareas', this.tarea);
+          console.log(response)
 /*          alert(""+this.$route.params.id_emergencia);
           tareaEmergencia.id_emergencia = this.$route.params.id_emergencia;
           alert("hola");
