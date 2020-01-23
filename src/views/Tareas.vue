@@ -34,7 +34,6 @@
           <v-card-title>{{item.titulo}}</v-card-title>
           <v-card-text>
             <p class="text-left">Estado de la tarea: {{item.estado}} <br></p>
-             <p class="text-left">Id del voluntario encargado: {{item.id_voluntario}} <br></p>
           </v-card-text>
           <v-card-actions class="d-flex justify-space-around">
             <v-btn

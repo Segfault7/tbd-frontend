@@ -14,11 +14,13 @@
               label="Estado"
               required
             ></v-text-field>
-            <v-text-field
-              v-model="tarea.id_voluntario"
-              label="Voluntario"
-              required
-            ></v-text-field>
+                          <h6>Seleccionar un voluntario</h6>
+            <v-col class="d-flex">
+
+              <select name="Voluntario" v-model="tarea.id_voluntario" class="form-control">
+                  <option v-for ="voluntario in voluntarios" :key ="voluntario.id_voluntario" :value="voluntario.id_voluntario">{{voluntario.nombre}} {{voluntario.apellido}}</option>
+              </select>
+            </v-col>
 
             <v-btn class="mr-4" @click="save()" color = "teal lighten-4">Crear</v-btn>
             <v-btn class="mr-4" to="/">Volver</v-btn>
@@ -35,12 +37,26 @@
 export default{
   data:function(){
     return{
+      voluntarioBuscado:"",
+      voluntarios: [],
       tarea:{},
 //      tareaEmergencia: {},
       message:""
     }
   },
   methods:{
+    getData: async function(){ //Obtiene todas las emergencias
+      try{
+
+        let response = await this.$http.get(`/voluntarios`);
+        this.voluntarios  = response.data;
+        console.log('headers', response.headers)
+
+
+      } catch (e) {
+        console.log('error', e)
+      }
+    },
     save:async function(){
       this.message = "";
       let aux = this.$route.params.id_emergencia;
@@ -56,12 +72,20 @@ export default{
           alert(""+tareaEmergencia.id_tarea);
           let responseB = await this.$http.post('/emergencia_tarea', this.tareaEmergencia);
 */
-          this.message = "Se ha agregado existosamente"
+          this.message = "Se ha agregado existosamente";
+          this.tarea = {};
+
       } catch (e) {
         console.log('error',e)
         this.message= "Ha ocurrido un error"
       }
-    }
+    },
+
+  },
+  created:function(){
+
+    this.getData();
+
   }
 }
 </script>
