@@ -41,9 +41,10 @@ var router = new VueRouter({
       component: Dimensiones
     },
     {
-      path:'/nuevatarea',
+      path:'/nuevatarea/:id_emergencia',
       name:'nuevatarea',
-      component: NuevaTarea
+      component: NuevaTarea,
+      props: true
     },
     {
       path:'/nuevovoluntario',
@@ -51,9 +52,10 @@ var router = new VueRouter({
       component: NuevoVoluntario
     },
     {
-      path:'/tareas',
+      path:'/tareas/:id_emergencia',
       name:'tareas',
-      component: Tareas
+      component: Tareas,
+      props: true
     },
     {
       path:'/mapavoluntario',

@@ -1,11 +1,6 @@
 <template>
     <v-container>
       <h1 class="font-weight-black">Nueva Tarea</h1>
-      <v-card color = "#b2b6df">
-        <v-card-text>
-          <p class="text-left">id_emergencia: {{$route.params.id_emergencia}} <br></p>
-        </v-card-text>
-      </v-card>
       <v-card>
         <v-card-text>
           <form>

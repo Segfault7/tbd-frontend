@@ -34,7 +34,8 @@
               <v-btn
               :to="{
                 name: 'nuevatarea',
-                params: {id_emergencia: item.id_emergencia}}"
+                params: {id_emergencia: item.id_emergencia,
+                        nombre: item.nombre}}"
               color = "teal lighten-4"
               >
                 Crear tarea

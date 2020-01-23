@@ -25,7 +25,7 @@
               type="email"
               required
             ></v-text-field>
-            
+
 
 
             <v-select v-model="voluntario.sexo" :items="sexo" hide-details
@@ -58,7 +58,7 @@
       </v-card>
     </v-flex>
     <v-flex xs12 sm6>
-      <h2 style="color:White;">Elegir ubicación del voluntario: </h2>
+
       <v-card>
         <div id="mapContainer">
         </div>
@@ -82,7 +82,7 @@ export default{
     return{
       message:"",
       sexo:[
-      
+
       {value: 'Male', text: 'Hombre'},
       {value: 'Female', text: 'Mujer'},
       {value: 'Other', text: 'Otro'},
@@ -109,7 +109,7 @@ export default{
       } catch (e) {
         console.log('error',e)
         this.message= "Ha ocurrido un error";
-        
+
       }
     }
   },//FIN METODOS
@@ -120,18 +120,25 @@ export default{
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
-    //var marker = L.marker([-51.760928, -72.482996]).addTo(this.map);
+
+    var marker = {};
     this.map.doubleClickZoom.disable()
     this.map.on('dblclick', e=>{
+
       let latLng = this.map.mouseEventToLatLng(e.originalEvent)
-      L.marker([latLng.lat, latLng.lng]).addTo(this.map)
+      if(marker != undefined){
+          this.map.removeLayer(marker);
+      };
+
+
+      marker = L.marker([latLng.lat, latLng.lng]).addTo(this.map)
       var latitud = latLng.lat;
       var longitud = latLng.lng;
       //Hay que hacerlo al reves, porque leaflet intercambia los datos, latitud=longitud, longitud=latitud
-      this.latitud = longitud; 
+      this.latitud = longitud;
       this.longitud =  latitud;
       //document.getElementById('latitud').value = this.latitud;
-      //document.getElementById('longitud').value= this.longitud; 
+      //document.getElementById('longitud').value= this.longitud;
     })
   },
   beforeDestroy() {

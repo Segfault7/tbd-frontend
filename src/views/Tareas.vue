@@ -9,11 +9,10 @@
       max-height = "400"
       >
         <v-card color = "#b2b6df">
-          <h2>{{$route.params.nombre}}</h2>
+          <h2>{{this.emergencia.nombre}}</h2>
           <v-card-text>
-            <p class="text-left">Ubicación: {{$route.params.ubicacion}} <br></p>
-            <p class="text-left">Tipo: {{$route.params.tipo}} <br></p>
-            Descripción: {{$route.params.descripcion}}</v-card-text>
+            <p class="text-left">Tipo: {{this.emergencia.tipo}} <br></p>
+            Descripción: {{this.emergencia.descripcion}}</v-card-text>
         </v-card>
       </v-col>
       <v-col class="d-flex justify-space-around">
@@ -63,6 +62,7 @@ export default{
     return {
 
       items:[],
+      emergencia: {},
       page:1,
       perPage: 10,
       totalRecords:0,
@@ -86,6 +86,8 @@ export default{
         let id_emergencia = this.$route.params.id_emergencia;
         let response = await this.$http.get(`/tareas_de_emergencias?offset=${offset}&limit=${perPage}&id_emergencia=${id_emergencia}`);
         this.items  = response.data;
+        let responseB = await this.$http.get(`/emergencias/`+ id_emergencia);
+        this.emergencia  = responseB.data[0];
         console.log('headers', response.headers)
         this.totalRecords = +response.headers['pagination-count']
       } catch (e) {

@@ -8,7 +8,7 @@
       <h1 class="font-weight-black">Voluntarios</h1>
 
 
-      
+
       <v-btn class="mx-auto" color = "teal lighten-4" to="/nuevovoluntario">Crear nuevo voluntario</v-btn>
       <v-btn class="mx-auto" color = "teal lighten-4" to="/mapavoluntario">Ver mapa de voluntarios</v-btn>
       <v-col
@@ -88,7 +88,6 @@ export default{
       }
 
     }
-
 
 
   },

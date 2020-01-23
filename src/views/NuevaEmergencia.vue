@@ -46,7 +46,6 @@
       </v-card>
       </v-flex>
       <v-flex xs12 sm6>
-      <h2 style="color:White;">Elegir ubicación de la emergencia: </h2>
       <v-card>
         <div id="mapContainer">
         </div>
